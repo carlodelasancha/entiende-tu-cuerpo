@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entiende tu cuerpo · Dr. Carlo De la Sancha</title>
+<meta name="description" content="Cada quince días, un patólogo te lleva por dentro de tu cuerpo: un caso real, qué está pasando y qué puedes hacer. Gratis, a tu correo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500&display=swap" rel="stylesheet">
+<style>
+  :root{--violeta:#612FD7;--indigo:#130568;--rosa:#E97DB6;--aqua:#9BEAEB;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{min-height:100%;}
+  body{
+    font-family:'Inter',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:#fff;min-height:100vh;
+    background:
+      radial-gradient(115% 75% at 84% 4%, rgba(233,125,182,0.42) 0%, rgba(233,125,182,0) 44%),
+      radial-gradient(90% 65% at 10% 98%, rgba(155,234,235,0.16) 0%, rgba(155,234,235,0) 52%),
+      linear-gradient(157deg,#6A34DE 0%,#4A1FB0 40%,#2A1080 72%,#140A54 100%);
+    display:flex;align-items:center;justify-content:center;padding:52px 22px;
+  }
+  .grain{position:fixed;inset:0;opacity:0.07;mix-blend-mode:soft-light;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  .wrap{position:relative;max-width:560px;width:100%;text-align:center;}
+  .logo{height:60px;margin:0 auto 26px;display:block;}
+  .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#DDD0FB;font-weight:600;margin-bottom:16px;}
+  h1{font-family:'Satoshi','Inter',sans-serif;font-weight:900;font-size:56px;line-height:1.0;letter-spacing:-2px;margin-bottom:18px;}
+  .sub{font-size:18px;line-height:1.55;color:#EBE5FC;max-width:490px;margin:0 auto 30px;}
+  .microframe{position:relative;border-radius:18px;overflow:hidden;margin:0 auto 12px;max-width:520px;
+    border:1px solid rgba(255,255,255,0.16);box-shadow:0 24px 70px rgba(8,2,30,0.5);}
+  .microframe img{width:100%;display:block;}
+  .microframe .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 18px 12px;font-size:12px;letter-spacing:0.5px;color:#EAD9F2;
+    background:linear-gradient(to top, rgba(14,4,48,0.85), rgba(14,4,48,0));text-align:left;}
+  .signup{max-width:440px;margin:26px auto 18px;}
+  .formkit-form{margin:0 !important;background:transparent !important;border:none !important;padding:0 !important;}
+  .formkit-fields{display:block !important;}
+  .formkit-field{display:block !important;width:100% !important;margin:0 0 10px 0 !important;}
+  .formkit-input{display:block !important;width:100% !important;box-sizing:border-box !important;border:none !important;border-radius:13px !important;padding:16px 18px !important;font-size:16px !important;font-family:'Inter',sans-serif !important;color:#241b3d !important;outline:none !important;box-shadow:0 6px 20px rgba(8,2,30,0.25) !important;background:#fff !important;height:auto !important;}
+  .formkit-input::placeholder{color:#8b83a3 !important;}
+  .formkit-submit{display:block !important;width:100% !important;box-sizing:border-box !important;border:none !important;border-radius:13px !important;padding:16px 24px !important;font-family:'Satoshi','Inter',sans-serif !important;font-weight:700 !important;font-size:16px !important;color:#fff !important;cursor:pointer;background:linear-gradient(135deg,#E97DB6,#8A3CE0) !important;box-shadow:0 8px 24px rgba(138,60,224,0.45) !important;}
+  .formkit-powered-by-convertkit-container{display:none !important;}
+  .formkit-alert{color:#fff !important;background:rgba(255,255,255,0.14) !important;border:none !important;border-radius:10px !important;font-size:13px !important;margin:0 0 10px !important;padding:9px 12px !important;list-style:none !important;}
+  .sig{font-size:13.5px;color:#C6BAE6;line-height:1.5;margin-top:4px;}
+  .tag{font-family:'Satoshi','Inter',sans-serif;font-weight:700;font-size:17px;color:var(--aqua);letter-spacing:0.3px;margin-top:26px;}
+  @media (max-width:560px){
+    h1{font-size:42px;} .sub{font-size:16px;} .formkit-fields{flex-direction:column !important;} .formkit-submit{width:100% !important;}
+  }
+</style>
+</head>
+<body>
+  <div class="grain"></div>
+  <div class="wrap">
+    <img class="logo" src="https://files.catbox.moe/8kp7xe.png" alt="Dr. Carlo De la Sancha">
+    <p class="kicker">Newsletter gratis · Cada quincena</p>
+    <h1>Entiende tu cuerpo</h1>
+    <p class="sub">Soy patólogo. Estudio el mecanismo de las enfermedades y veo al microscopio lo que casi nadie ve de tu cuerpo. Cada quince días te llevo conmigo a un caso real .. qué está pasando dentro de ti, por qué, y qué puedes hacer.</p>
+    <div class="microframe">
+      <img src="https://files.catbox.moe/eb3kj1.png" alt="Microscopía">
+    </div>
+    <!-- Embed oficial de Kit (form 9647059, uid 3db2b3f417): maneja el guard anti-bot. Estilizado a la marca vía CSS + textos por JS. -->
+    <div class="signup"><script async data-uid="3db2b3f417" src="https://dr-carlo-de-la-sancha.kit.com/3db2b3f417/index.js"></script></div>
+    <p class="sig">Dr. Carlo De la Sancha · Patólogo, profesor e investigador.</p>
+    <p class="tag">Salud y ciencia para todos.</p>
+  </div>
+  <script>
+    /* Ajusta los textos del embed de Kit a la voz de la marca en cuanto renderiza */
+    (function(){
+      var n=0,t=setInterval(function(){
+        n++;
+        var i=document.querySelector('.formkit-input');
+        if(i){ i.setAttribute('placeholder','Tu correo electrónico'); }
+        var s=document.querySelector('.formkit-submit .formkit-submit-content')||document.querySelector('.formkit-submit span');
+        if(s){ s.textContent='Quiero entender mi cuerpo'; }
+        if((i&&s)||n>60) clearInterval(t);
+      },200);
+    })();
+  </script>
+</body>
+</html>
