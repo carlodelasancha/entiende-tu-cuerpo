@@ -70,6 +70,11 @@
         if(i && i.getAttribute('placeholder')!=='Tu correo electrónico') i.setAttribute('placeholder','Tu correo electrónico');
         var s=document.querySelector('.formkit-submit .formkit-submit-content')||document.querySelector('.formkit-submit span');
         if(s && s.textContent!=='Quiero entender mi cuerpo') s.textContent='Quiero entender mi cuerpo';
+        /* mensaje post-envio del embed (Kit lo pone en ingles) -> espanol */
+        var MSG='¡Listo! Revisa tu correo y confirma tu suscripción para entrar.';
+        document.querySelectorAll('.formkit-alert, .formkit-alert-success').forEach(function(a){
+          if(/success|check your email/i.test(a.textContent) && a.textContent!==MSG) a.textContent=MSG;
+        });
       }
       apply();
       try{ new MutationObserver(apply).observe(document.body,{childList:true,subtree:true}); }catch(e){}
