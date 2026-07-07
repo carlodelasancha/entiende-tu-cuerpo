@@ -23,14 +23,23 @@
   }
   .grain{position:fixed;inset:0;opacity:0.07;mix-blend-mode:soft-light;pointer-events:none;
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  .texbg{position:fixed;inset:0;opacity:0.15;mix-blend-mode:soft-light;pointer-events:none;
+    background:url("assets/texture.png") center/cover;
+    -webkit-mask-image:radial-gradient(125% 95% at 82% 0%, #000 0%, transparent 58%);
+    mask-image:radial-gradient(125% 95% at 82% 0%, #000 0%, transparent 58%);}
   .wrap{position:relative;max-width:560px;width:100%;text-align:center;}
   .logo{height:60px;margin:0 auto 26px;display:block;}
   .kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#DDD0FB;font-weight:600;margin-bottom:16px;}
   h1{font-family:'Satoshi','Inter',sans-serif;font-weight:900;font-size:56px;line-height:1.0;letter-spacing:-2px;margin-bottom:18px;}
-  .sub{font-size:18px;line-height:1.55;color:#EBE5FC;max-width:460px;margin:0 auto 30px;}
-  .microframe{position:relative;border-radius:18px;overflow:hidden;margin:0 auto 12px;max-width:460px;
-    border:1px solid rgba(255,255,255,0.16);box-shadow:0 24px 70px rgba(8,2,30,0.5);}
-  .microframe img{width:100%;height:auto;display:block;}
+  .sub{font-size:18px;line-height:1.55;color:#EBE5FC;max-width:460px;margin:0 auto 22px;}
+  .authorbox{display:inline-flex;align-items:center;gap:11px;margin:0 auto 30px;padding:5px 20px 5px 5px;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:44px;
+    box-shadow:0 8px 24px rgba(8,2,30,0.28);}
+  .authorbox img{width:44px;height:44px;border-radius:50%;display:block;}
+  .authorbox .an{font-family:'Satoshi','Inter',sans-serif;font-weight:700;font-size:15px;color:#fff;line-height:1;}
+  .microframe{position:relative;border-radius:18px;margin:0 auto 12px;max-width:460px;padding:7px;
+    background:url("assets/texture.png") center/cover;box-shadow:0 24px 70px rgba(8,2,30,0.5);}
+  .microframe img{width:100%;height:auto;display:block;border-radius:12px;}
   .signup{max-width:460px;margin:26px auto 18px;}
   .formkit-form{margin:0 !important;background:transparent !important;border:none !important;padding:0 !important;}
   .formkit-fields{display:block !important;}
@@ -49,11 +58,13 @@
 </head>
 <body>
   <div class="grain"></div>
+  <div class="texbg"></div>
   <div class="wrap">
     <img class="logo" src="assets/logo.png" alt="Dr. Carlo De la Sancha">
     <p class="kicker">Newsletter gratis · Cada quincena</p>
     <h1>Entiende tu cuerpo</h1>
     <p class="sub">Soy médico patólogo. Estudio el mecanismo de las enfermedades y veo al microscopio lo que casi nadie ve de tu cuerpo. Cada quince días te llevo conmigo a un caso real .. qué está pasando dentro de ti, por qué, y qué puedes hacer.</p>
+    <div class="authorbox"><img src="assets/avatar.png" alt="Dr. Carlo De la Sancha"><div class="an">Dr. Carlo De la Sancha</div></div>
     <div class="microframe">
       <img src="assets/micrograph.jpg" alt="Microscopía" width="1100" height="614">
     </div>
