@@ -99,7 +99,7 @@
            entraron `active` de inmediato. La pagina mandaba a la gente a revisar una bandeja
            donde no iba a llegar nada, y a confirmar algo que no existe. Ahora dice la verdad y
            le pone fecha al primer contacto. */
-        var MSG='¡Listo, ya estás dentro! No tienes que confirmar nada. Tu primera edición te llega el domingo a las 9:30.';
+        var MSG='¡Bienvenido! Ya quedaste en la lista. Cada quince días te llevo conmigo a un caso real, visto desde el microscopio.';
         document.querySelectorAll('.formkit-alert, .formkit-alert-success').forEach(function(a){
           if(/success|check your email/i.test(a.textContent) && a.textContent!==MSG) a.textContent=MSG;
         });
