@@ -99,7 +99,7 @@
            entraron `active` de inmediato. La pagina mandaba a la gente a revisar una bandeja
            donde no iba a llegar nada, y a confirmar algo que no existe. Ahora dice la verdad y
            le pone fecha al primer contacto. */
-        var MSG='Te acabo de mandar un correo para confirmar que es tuyo. Revisa también Promociones. Ábrelo, dale clic, y quedas dentro.';
+        var MSG='Te acabo de mandar un correo: "Confirma tu suscripción gratis a Entiende tu cuerpo", de Dr. Carlo De la Sancha. Ábrelo y dale al botón. En Gmail puede caer en Promociones o Actualizaciones.';
         document.querySelectorAll('.formkit-alert, .formkit-alert-success').forEach(function(a){
           if(/success|check your email/i.test(a.textContent) && a.textContent!==MSG) a.textContent=MSG;
         });
