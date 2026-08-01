@@ -99,9 +99,11 @@
            entraron `active` de inmediato. La pagina mandaba a la gente a revisar una bandeja
            donde no iba a llegar nada, y a confirmar algo que no existe. Ahora dice la verdad y
            le pone fecha al primer contacto. */
-        var MSG='Te acabo de mandar un correo: "Confirma tu suscripción gratis a Entiende tu cuerpo", de Dr. Carlo De la Sancha. Ábrelo y dale al botón. En Gmail puede caer en Promociones o Actualizaciones.';
+        var MSG='¡Listo, ya estás dentro! Cada quince días te llevo conmigo a un caso real, visto desde el microscopio.';
         document.querySelectorAll('.formkit-alert, .formkit-alert-success').forEach(function(a){
-          if(/success|check your email/i.test(a.textContent) && a.textContent!==MSG) a.textContent=MSG;
+          /* Un error de validacion ("email invalido") NO se pisa: solo el aviso de exito. */
+          var err=/inv[aá]lid|invalid|error|requerid|required|ya est[aá]s suscrit/i.test(a.textContent);
+          if(!err && a.textContent.trim() && a.textContent!==MSG) a.textContent=MSG;
         });
       }
       apply();
