@@ -23,7 +23,7 @@
   }
   .wrap{max-width:520px;width:100%;text-align:center;}
   .logo{height:56px;margin:0 auto 26px;display:block;}
-  .check{font-size:44px;margin-bottom:14px;}
+  .check{margin:0 auto 16px;line-height:0;}
   h1{font-family:'Satoshi','Inter',sans-serif;font-weight:900;font-size:42px;line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px;}
   .sub{font-size:17.5px;line-height:1.6;color:#EBE5FC;max-width:440px;margin:0 auto 26px;}
   .sub strong{color:#fff;}
@@ -35,9 +35,15 @@
 <body>
   <div class="wrap">
     <img class="logo" src="assets/logo.png" alt="Dr. Carlo De la Sancha">
-    <div class="check">✅</div>
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 52 52" width="52" height="52">
+        <circle cx="26" cy="26" r="24" fill="none" stroke="#9BEAEB" stroke-width="2.5" opacity=".55"/>
+        <path d="M15 26.5 L22.5 34 L37 19" fill="none" stroke="#9BEAEB" stroke-width="4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
     <h1>¡Ya estás dentro!</h1>
-    <p class="sub">Tu suscripción quedó confirmada. En un momento te llega tu <strong>correo de bienvenida</strong> .. ahí te cuento qué vas a recibir y cada cuándo. Si no lo ves, échale un ojo a tu carpeta de spam y márcalo como seguro.</p>
+    <p class="sub">Tu correo quedó confirmado. En la <strong>próxima edición</strong> te llevo conmigo a un caso real: qué está pasando dentro de tu cuerpo, por qué, y qué puedes hacer.<br><br>Búscame como <strong>Dr. Carlo De la Sancha</strong> y márcame como seguro, para que no me caiga en spam.</p>
     <p class="tag">Salud y ciencia para todos.</p>
     <p class="sig">Dr. Carlo De la Sancha · Patólogo, profesor e investigador.</p>
   </div>
