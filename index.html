@@ -127,7 +127,12 @@
       }
       apply();
       try{ new MutationObserver(apply).observe(document.body,{childList:true,subtree:true}); }catch(e){}
-      var n=0,t=setInterval(function(){ apply(); if(++n>120) clearInterval(t); },150);
+      /* El respaldo vigilaba 18 s (120 x 150 ms) y se apagaba. Medido el 1-ago-2026: si la
+         persona tarda mas de eso en escribir su correo .. o sea, casi siempre .. la alerta de
+         Kit llegaba con el vigilante ya dormido y la tarjeta de exito NO aparecia. Ahora
+         vigila 30 min, que cubre cualquier tiempo humano de llenado. Es un querySelector cada
+         400 ms: no se nota. */
+      var n=0,t=setInterval(function(){ apply(); if(++n>4500) clearInterval(t); },400);
     })();
   </script>
 </body>
