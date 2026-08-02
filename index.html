@@ -119,10 +119,17 @@
         if(s && s.textContent!=='Quiero entender mi cuerpo') s.textContent='Quiero entender mi cuerpo';
         /* Al enviarse, Kit muestra su alerta de exito. Se marca el <body> y el CSS se
            encarga de vaciar la pagina. Un error de validacion no cuenta como exito. */
-        var al=document.querySelector('.formkit-alert, .formkit-alert-success');
-        if(al && al.textContent.trim() &&
-           !/inv[aá]lid|invalid|error|requerid|required/i.test(al.textContent)){
-          document.body.classList.add('ok');
+        /* querySelector devolvia el PRIMER `.formkit-alert`, que Kit deja SIEMPRE en el DOM
+           y VACIO. El mensaje de exito llega en otro elemento mas abajo, asi que la condicion
+           `textContent.trim()` nunca se cumplia y la tarjeta jamas aparecia .. medido el
+           1-ago-2026 con una suscripcion real que si entro a Kit. Se recorren TODOS. */
+        var alertas=document.querySelectorAll('.formkit-alert, .formkit-alert-success');
+        for(var k=0;k<alertas.length;k++){
+          var txt=(alertas[k].textContent||'').trim();
+          if(txt && !/inv[aá]lid|invalid|error|requerid|required/i.test(txt)){
+            document.body.classList.add('ok');
+            break;
+          }
         }
       }
       apply();
