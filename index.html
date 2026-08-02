@@ -49,6 +49,24 @@
   .formkit-submit{display:block !important;width:100% !important;box-sizing:border-box !important;border:none !important;border-radius:13px !important;padding:16px 24px !important;font-family:'Satoshi','Inter',sans-serif !important;font-weight:700 !important;font-size:16px !important;color:#fff !important;cursor:pointer;background:linear-gradient(135deg,#E97DB6 0%,#612FD7 100%) !important;box-shadow:0 8px 24px rgba(97,47,215,0.5) !important;text-shadow:0 1px 2px rgba(20,10,60,0.4) !important;}
   .formkit-powered-by-convertkit-container,.formkit-powered-by-convertkit,[class*="powered-by-convertkit"]{display:none !important;}
   .formkit-alert{color:#fff !important;background:rgba(255,255,255,0.14) !important;border:none !important;border-radius:10px !important;font-size:13px !important;margin:0 0 10px !important;padding:9px 12px !important;list-style:none !important;}
+  /* Estado de EXITO. Antes era el texto de Kit metido en una cajita translucida: un parrafo
+     largo, ilegible (Carlo, 1-ago-2026: "esta imagen esta muy fea"). Ahora el formulario
+     desaparece y queda una tarjeta con jerarquia: palomita, titulo, el ASUNTO exacto que la
+     persona tiene que buscar, y la nota de Gmail en chico. */
+  .exito{display:none;text-align:center;padding:26px 22px 24px;border-radius:16px;
+    background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.16);
+    box-shadow:0 14px 40px rgba(8,2,30,0.30);max-width:460px;margin:26px auto 18px;}
+  .exito.on{display:block;}
+  .exito .pal{width:46px;height:46px;margin:0 auto 14px;display:block;}
+  .exito h2{font-family:'Satoshi','Inter',sans-serif;font-weight:900;font-size:26px;
+    letter-spacing:-0.6px;margin-bottom:8px;color:#fff;}
+  .exito .lead{font-size:15.5px;line-height:1.5;color:#EBE5FC;margin-bottom:16px;}
+  .exito .asunto{display:block;background:rgba(8,2,30,0.28);border-radius:11px;padding:12px 14px;
+    font-size:14.5px;line-height:1.45;color:#fff;margin-bottom:14px;}
+  .exito .asunto b{display:block;font-family:'Satoshi','Inter',sans-serif;font-weight:700;}
+  .exito .asunto span{color:#C6BAE6;font-size:13px;}
+  .exito .nota{font-size:12.5px;color:#C6BAE6;line-height:1.45;}
+  .formkit-alert{display:none !important;}
   .sig{font-size:13.5px;color:#C6BAE6;line-height:1.5;margin-top:4px;}
   .tag{font-family:'Satoshi','Inter',sans-serif;font-weight:700;font-size:17px;color:var(--aqua);letter-spacing:0.3px;margin-top:26px;}
   .social{display:flex;justify-content:center;gap:12px;margin-top:22px;}
@@ -74,6 +92,18 @@
     </div>
     <!-- Embed oficial de Kit (form 9647059, uid 3db2b3f417): maneja el guard anti-bot. Estilizado a la marca vía CSS + textos por JS. -->
     <div class="signup"><script async data-uid="3db2b3f417" src="https://dr-carlo-de-la-sancha.kit.com/3db2b3f417/index.js"></script></div>
+    <div class="exito" id="exito">
+      <svg class="pal" viewBox="0 0 52 52" aria-hidden="true">
+        <circle cx="26" cy="26" r="24" fill="none" stroke="#9BEAEB" stroke-width="2.5" opacity=".55"/>
+        <path d="M15 26.5 L22.5 34 L37 19" fill="none" stroke="#9BEAEB" stroke-width="4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2>Te mandé un correo</h2>
+      <p class="lead">Ábrelo y dale al botón para quedar dentro.</p>
+      <div class="asunto"><b>Confirma tu suscripción gratis a Entiende tu cuerpo</b>
+        <span>de Dr. Carlo De la Sancha</span></div>
+      <p class="nota">Si no lo ves, búscalo en Promociones o Actualizaciones.</p>
+    </div>
     <p class="sig">Dr. Carlo De la Sancha · Patólogo, profesor e investigador.</p>
     <p class="tag">Salud y ciencia para todos.</p>
     <div class="social">
@@ -93,18 +123,18 @@
         if(i && i.getAttribute('placeholder')!=='Tu correo electrónico') i.setAttribute('placeholder','Tu correo electrónico');
         var s=document.querySelector('.formkit-submit .formkit-submit-content')||document.querySelector('.formkit-submit span');
         if(s && s.textContent!=='Quiero entender mi cuerpo') s.textContent='Quiero entender mi cuerpo';
-        /* mensaje post-envio del embed (Kit lo pone en ingles) -> espanol */
-        /* 1-ago-2026: el mensaje anterior era FALSO. La cuenta de Kit esta en plan gratis,
-           la secuencia de bienvenida esta INACTIVA y no hay doble opt-in: los 100 suscriptores
-           entraron `active` de inmediato. La pagina mandaba a la gente a revisar una bandeja
-           donde no iba a llegar nada, y a confirmar algo que no existe. Ahora dice la verdad y
-           le pone fecha al primer contacto. */
-        var MSG='¡Listo, ya estás dentro! Cada quince días te llevo conmigo a un caso real, visto desde el microscopio.';
-        document.querySelectorAll('.formkit-alert, .formkit-alert-success').forEach(function(a){
-          /* Un error de validacion ("email invalido") NO se pisa: solo el aviso de exito. */
-          var err=/inv[aá]lid|invalid|error|requerid|required|ya est[aá]s suscrit/i.test(a.textContent);
-          if(!err && a.textContent.trim() && a.textContent!==MSG) a.textContent=MSG;
-        });
+        /* Al enviarse, Kit muestra su alerta de exito. En vez de reescribir su texto dentro
+           de una cajita, se ESCONDE el formulario y se muestra la tarjeta `.exito`. Un error
+           de validacion no cuenta como exito. */
+        var al=document.querySelector('.formkit-alert, .formkit-alert-success');
+        if(al && al.textContent.trim() &&
+           !/inv[aá]lid|invalid|error|requerid|required/i.test(al.textContent)){
+          var e=document.getElementById('exito');
+          if(e && !e.classList.contains('on')){
+            e.classList.add('on');
+            var sg=document.querySelector('.signup'); if(sg) sg.style.display='none';
+          }
+        }
       }
       apply();
       try{ new MutationObserver(apply).observe(document.body,{childList:true,subtree:true}); }catch(e){}
