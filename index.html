@@ -113,8 +113,16 @@
     /* Ajusta los textos del embed de Kit a la voz de la marca (robusto: observer + fallback, evita parpadeo) */
     (function(){
       function apply(){
-        var i=document.querySelector('.formkit-input');
+        /* El campo de correo se busca por TIPO, no por posicion (2026-09-01). Antes era
+           `querySelector('.formkit-input')`, o sea EL PRIMERO: el dia que el form de Kit lleve
+           tambien el nombre, ese primero es el nombre, y este script le pondria encima
+           "Tu correo electronico". Se cazo maquetando la captura para Carlo, antes de que
+           llegara a la pagina viva. El fallback conserva el comportamiento de hoy, cuando el
+           unico campo es el correo y Kit no siempre le pone type=email. */
+        var i=document.querySelector('.formkit-input[type="email"]')||document.querySelector('.formkit-input[name="email_address"]')||document.querySelector('.formkit-input');
         if(i && i.getAttribute('placeholder')!=='Tu correo electrónico') i.setAttribute('placeholder','Tu correo electrónico');
+        var n=document.querySelector('.formkit-input[name="fields[first_name]"]')||document.querySelector('.formkit-input[type="text"]:not([type="email"])');
+        if(n && n!==i && n.getAttribute('placeholder')!=='Tu nombre') n.setAttribute('placeholder','Tu nombre');
         var s=document.querySelector('.formkit-submit .formkit-submit-content')||document.querySelector('.formkit-submit span');
         if(s && s.textContent!=='Quiero entender mi cuerpo') s.textContent='Quiero entender mi cuerpo';
         /* Al enviarse, Kit muestra su alerta de exito. Se marca el <body> y el CSS se
